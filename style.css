@@ -1,3 +1,36 @@
-body > * {
+body, html {
+    height: 70vh;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, serif;
+}
+
+.container {
+    display: grid;
+    grid-template: 1fr 5fr 1fr / 1fr 5fr 1fr;
+    height: 140%;
+    box-sizing: border-box;
+}
+
+body > div, .library-grid > div {
     border: 1px solid black;
 }
+
+.container {
+    display: grid;
+}
+
+.title {
+    grid-column: 1 / 4;
+}
+
+button {
+    grid-column: 2 / 3;
+}
+
+.library-grid {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 1vmax;
+}
+
