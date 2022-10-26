@@ -37,6 +37,13 @@ function addBookToLibrary() {
     }
 }
 
+function addNewBookForm() {
+    const form = document.querySelector(".form-items");
+    form.style.visibility = "visible";
+}
+
+
+
 
 addBookToLibrary();
 // console.log(myLibrary);

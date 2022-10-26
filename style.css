@@ -34,3 +34,7 @@ button {
     gap: 1vmax;
 }
 
+.form-items {
+    visibility: hidden;
+}
+
