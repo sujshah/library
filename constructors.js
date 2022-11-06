@@ -11,30 +11,13 @@ function Book(title, author, pages, read) {
     }
 }
 
-function addBookToLibrary() {
-    let book = new Book("The Hobbit", "Tolkien", 245, true);
-    myLibrary.push(book);
-    book = new Book("The Hobbit 2", "Tolkien", 245, true);
-    myLibrary.push(book);
-    book = new Book("The Hobbit 2", "Tolkien", 245, true);
-    myLibrary.push(book);
-    book = new Book("The Hobbit 2", "Tolkien", 245, true);
-    myLibrary.push(book);
-    book = new Book("The Hobbit 2", "Tolkien", 245, true);
-    myLibrary.push(book);
-    book = new Book("The Hobbit 2", "Tolkien", 245, true);
-    myLibrary.push(book);
-    book = new Book("The Hobbit 2", "Tolkien", 245, true);
-    myLibrary.push(book);
-    book = new Book("The Hobbit 2", "Tolkien", 245, true);
+function addBookToLibrary(book) {
     myLibrary.push(book);
     let libraryGrid = document.querySelector(".library-grid");
-    for (const libraryBook of myLibrary) {
-        let div = document.createElement('div');
-        div.classList.add('book');
-        div.textContent = libraryBook.info();
-        libraryGrid.appendChild(div);
-    }
+    let div = document.createElement('div');
+    div.classList.add('book');
+    div.textContent = book.info();
+    libraryGrid.appendChild(div);
 }
 
 function addNewBookForm() {
@@ -43,7 +26,23 @@ function addNewBookForm() {
 }
 
 
+function listenNewBookSubmit() {
+    const submitButton = document.querySelector(".form-items");
+    submitButton.addEventListener("submit", submitBook);
+}
 
+function submitBook(event) {
+    event.preventDefault();
+    const form = event.target.elements;
+    console.log(form.title.value);
+    const book = new Book(
+        form.title.value,
+        form.author.value,
+        form.pages.value,
+        form.read.value,
+    )
+    addBookToLibrary(book);
 
-addBookToLibrary();
-// console.log(myLibrary);
+}
+
+listenNewBookSubmit();
