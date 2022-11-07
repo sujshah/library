@@ -40,7 +40,6 @@ function listenNewBookSubmit() {
 }
 
 function deleteBookFromLibrary(event) {
-    console.log("reached");
     if (event.target.classList.contains("delete")) {
         const bookElement = event.target.parentNode;
         const key = bookElement.getAttribute("data-key");
