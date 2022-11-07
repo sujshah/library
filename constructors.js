@@ -1,4 +1,5 @@
-let myLibrary = [];
+let myLibrary = {};
+let count = 0
 
 function Book(title, author, pages, read) {
     this.title = title
@@ -12,12 +13,19 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(book) {
-    myLibrary.push(book);
+    myLibrary[count] = book;
     let libraryGrid = document.querySelector(".library-grid");
     let div = document.createElement('div');
     div.classList.add('book');
+    div.setAttribute("data-key", count.toString());
     div.textContent = book.info();
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = "Delete";
+    deleteButton.setAttribute("type", "submit");
+    deleteButton.classList.add('delete');
+    div.appendChild(deleteButton);
     libraryGrid.appendChild(div);
+    count++;
 }
 
 function addNewBookForm() {
@@ -31,10 +39,23 @@ function listenNewBookSubmit() {
     submitButton.addEventListener("submit", submitBook);
 }
 
+function deleteBookFromLibrary(event) {
+    console.log("reached");
+    if (event.target.classList.contains("delete")) {
+        const bookElement = event.target.parentNode;
+        const key = bookElement.getAttribute("data-key");
+        delete myLibrary[key];
+        bookElement.remove();
+    }
+}
+
+function listenDeleteBook() {
+    document.body.addEventListener("click", deleteBookFromLibrary);
+}
+
 function submitBook(event) {
     event.preventDefault();
     const form = event.target.elements;
-    console.log(form.title.value);
     const book = new Book(
         form.title.value,
         form.author.value,
@@ -46,3 +67,4 @@ function submitBook(event) {
 }
 
 listenNewBookSubmit();
+listenDeleteBook();
