@@ -7,8 +7,8 @@ function Book(title, author, pages, read) {
     this.pages = pages
     this.read = read
     this.info = function() {
-        const isReadString = read ? "read": "not read yet"
-        return `${title} by ${author}, ${pages} pages, ${isReadString}`
+        const isReadString = this.read ? "read": "not read yet"
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${isReadString}`
     }
 }
 
@@ -23,7 +23,12 @@ function addBookToLibrary(book) {
     deleteButton.textContent = "Delete";
     deleteButton.setAttribute("type", "submit");
     deleteButton.classList.add('delete');
+    let readButton = document.createElement('button');
+    readButton.textContent = "Read?";
+    readButton.setAttribute("type", "submit");
+    readButton.classList.add('read');
     div.appendChild(deleteButton);
+    div.appendChild(readButton);
     libraryGrid.appendChild(div);
     count++;
 }
@@ -48,8 +53,22 @@ function deleteBookFromLibrary(event) {
     }
 }
 
-function listenDeleteBook() {
+function toggleReadStatus(event) {
+    if (event.target.classList.contains("read")) {
+        console.log("read");
+        const bookElement = event.target.parentNode;
+        const key = bookElement.getAttribute("data-key");
+        let book = myLibrary[key];
+        book.read = !(book.read);
+        myLibrary[key] = book;
+        bookElement.firstChild.nodeValue = book.info();
+
+    }
+}
+
+function listenDynamicEvents() {
     document.body.addEventListener("click", deleteBookFromLibrary);
+    document.body.addEventListener("click", toggleReadStatus);
 }
 
 function submitBook(event) {
@@ -59,11 +78,11 @@ function submitBook(event) {
         form.title.value,
         form.author.value,
         form.pages.value,
-        form.read.value,
+        form.read.checked,
     )
     addBookToLibrary(book);
 
 }
 
 listenNewBookSubmit();
-listenDeleteBook();
+listenDynamicEvents();
