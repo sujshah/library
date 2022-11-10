@@ -10,6 +10,23 @@ body, html {
     grid-template: 1fr 5fr 1fr / 1fr 5fr 1fr;
     height: 140%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.container .bg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("wooden-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+    -webkit-filter: grayscale(1);
 }
 
 body > div, .library-grid > div {
@@ -21,7 +38,41 @@ body > div, .library-grid > div {
 }
 
 .title {
-    grid-column: 1 / 4;
+    grid-column: 2 / 3;
+    /*background-color: black;*/
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vmax;
+    font-weight: bold;
+    font-family: "DejaVu Sans Mono", sans-serif;
+    border: solid white 1vh;
+    border-radius: 1vh;
+    justify-self: center;
+    align-self: center;
+}
+
+.title-text {
+    padding: 1.5vh 1vh 1.5vh 2vh;
+}
+
+.prev {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.next {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+.prev, .next {
+    justify-self: center;
+    align-self: center;
+    font-size: 10vh;
+    color: white;
+    cursor: pointer;
 }
 
 button {
@@ -29,6 +80,8 @@ button {
 }
 
 .library-grid {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     gap: 1vmax;
