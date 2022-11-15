@@ -39,7 +39,6 @@ body > div, .library-grid > div {
 
 .title {
     grid-column: 2 / 3;
-    /*background-color: black;*/
     color: white;
     display: flex;
     align-items: center;
@@ -85,9 +84,16 @@ button {
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     gap: 1vmax;
+    aspect-ratio: 1;
+    width: 50%;
+    justify-self: center;
 }
 
 .form-items {
     visibility: hidden;
 }
 
+.book {
+    aspect-ratio: 1;
+    justify-self: center;
+}
