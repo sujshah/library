@@ -1,14 +1,15 @@
 let myLibrary = [];
 let boardNumber = 0
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, colour = "#000000") {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
+    this.colour = colour
     this.info = function() {
-        const isReadString = this.read ? "read": "not read yet"
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${isReadString}`
+        const isReadString = this.read ? "Read": "Not read"
+        return `${this.title}\r\nBy ${this.author}\r\n${this.pages} pages\r\n${isReadString}`
     }
 }
 
@@ -28,6 +29,7 @@ function generateLibraryGridForBoardNum(gridNum) {
             let div = document.createElement('div');
             div.classList.add('book');
             div.setAttribute("data-key", n.toString());
+            div.setAttribute('style', `white-space: pre;background-color:${book.colour};`);
             div.textContent = book.info();
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "Delete";
@@ -37,6 +39,7 @@ function generateLibraryGridForBoardNum(gridNum) {
             readButton.textContent = "Read?";
             readButton.setAttribute("type", "submit");
             readButton.classList.add('read');
+            div.appendChild(document.createElement("br"));
             div.appendChild(deleteButton);
             div.appendChild(readButton);
             libraryGrid.appendChild(div);
@@ -112,4 +115,15 @@ function moveRight() {
 
 
 listenNewBookSubmit();
+const exBook = new Book("Example Book", "Example Author", 1231, true);
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook;
+generateLibraryGridForBoardNum(boardNumber);
 listenDynamicEvents();

@@ -29,9 +29,6 @@ body, html {
     -webkit-filter: grayscale(1);
 }
 
-body > div, .library-grid > div {
-    border: 1px solid black;
-}
 
 .container {
     display: grid;
@@ -96,4 +93,7 @@ button {
 .book {
     aspect-ratio: 1;
     justify-self: center;
+    text-align: center;
+    border-radius: 1vh;
+    color: white;
 }
