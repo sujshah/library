@@ -63,7 +63,6 @@ function deleteBookFromLibrary(event) {
         const bookElement = event.target.parentNode;
         const key = bookElement.getAttribute("data-key");
         myLibrary.splice(key, 1);
-
         generateLibraryGridForBoardNum(boardNumber);
     }
 }
