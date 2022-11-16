@@ -30,7 +30,9 @@ function generateLibraryGridForBoardNum(gridNum) {
             div.classList.add('book');
             div.setAttribute("data-key", n.toString());
             div.setAttribute('style', `white-space: pre;background-color:${book.colour};`);
-            div.textContent = book.info();
+            let info = document.createElement('p');
+            info.classList.add('book-text')
+            info.textContent = book.info();
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "Delete";
             deleteButton.setAttribute("type", "submit");
@@ -40,6 +42,7 @@ function generateLibraryGridForBoardNum(gridNum) {
             readButton.setAttribute("type", "submit");
             readButton.classList.add('read');
             div.appendChild(document.createElement("br"));
+            div.appendChild(info);
             div.appendChild(deleteButton);
             div.appendChild(readButton);
             libraryGrid.appendChild(div);
@@ -75,7 +78,7 @@ function toggleReadStatus(event) {
         book.read = !(book.read);
         myLibrary[key] = book;
         bookElement.firstChild.nodeValue = book.info();
-
+        generateLibraryGridForBoardNum(boardNumber);
     }
 }
 
@@ -115,14 +118,8 @@ function moveRight() {
 
 listenNewBookSubmit();
 const exBook = new Book("Example Book", "Example Author", 1231, true);
+const exBook1 = new Book("Example Book", "Example Author", 1231, true);
 myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
-myLibrary[myLibrary.length] = exBook;
+myLibrary[myLibrary.length] = exBook1;
 generateLibraryGridForBoardNum(boardNumber);
 listenDynamicEvents();
