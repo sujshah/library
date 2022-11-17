@@ -90,6 +90,9 @@ function listenDynamicEvents() {
 function submitBook(event) {
     event.preventDefault();
     const form = event.target.elements;
+    if ((form.title.value === "") || (form.author.value  === "") || (form.pages.value === "")) {
+        return;
+    }
     const book = new Book(
         form.title.value,
         form.author.value,
