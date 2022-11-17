@@ -13,30 +13,31 @@
         <a class="prev" onclick="moveLeft()">&#10094;</a>
         <div class="library-grid"></div>
         <a class="next" onclick="moveRight()">&#10095;</a>
-        <button onclick="addNewBookForm()">New Book</button>
-        <form class="form-items" id="items">
-            <div class="pair">
-                <div class="label"><label for="author">Author</label></div>
-                <input type="text" id="author">
-            </div>
+        <div class="footer"><button onclick="addNewBookForm()" class="new-book">New Book</button>
+            <form class="form-items" id="items">
+                <div class="inputs">
+                <div class="pair">
+                    <div class="label"><label for="author">Author</label></div>
+                    <input type="text" id="author">
+                </div>
 
-            <div class="pair">
-                <div class="label"><label for="title">Title</label></div>
-                <input type="text" id="title">
-            </div>
+                <div class="pair">
+                    <div class="label"><label for="title">Title</label></div>
+                    <input type="text" id="title">
+                </div>
 
-            <div class="pair">
-                <div class="label"><label for="pages">Number of Pages</label></div>
-                <input type="number" id="pages">
-            </div>
+                <div class="pair">
+                    <div class="label"><label for="pages">Number of Pages</label></div>
+                    <input type="number" id="pages">
+                </div>
 
-            <div class="pair">
-                <div class="label"><label for="read">Read?</label></div>
-                <input type="checkbox" id="read">
-            </div>
-            <button type="submit" class="submit">Submit</button>
-        </form>
-
+                <div class="pair">
+                    <div class="label"><label for="read">Read?</label></div>
+                    <input type="checkbox" id="read">
+                </div>
+                </div>
+                <button type="submit" class="submit">Submit</button>
+            </form></div>
     </div>
 </body>
 </html>
